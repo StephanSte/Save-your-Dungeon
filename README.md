@@ -9,3 +9,5 @@ git config --local core.autoclrf false
 Im gitignore werden lockfiles ignored.Hier vermerkt falls das probleme macht
 
 Warum auch immer muss Unity geschlossen sein um zu committen. 
+
+https://github.com/desktop/desktop/issues/3841#issuecomment-361480731
