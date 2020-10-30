@@ -20,9 +20,17 @@ public class PlayerHealth : MonoBehaviour
 		SetMaxHealth(MaxHealth);	
 	}
 
-	//TODO: Death Screen
-	//Take damage and display on healthbar
-	public void TakeDamage(int damage)
+	private void LateUpdate()
+	{
+		if (PlayerWater ||PlayerFood || PlayerRadiation != true )
+		{
+			StartCoroutine("TakeDamageOverTime", 1f);
+
+		}
+	}
+    //TODO: Death Screen
+    //Take damage and display on healthbar
+    public void TakeDamage(int damage)
 	{
 		CurrentHealth -= damage;
 		if (CurrentHealth <= 0)
@@ -35,6 +43,12 @@ public class PlayerHealth : MonoBehaviour
 		}
 		SetHealth(CurrentHealth);
 	}
+
+	IEnumerator TakeDamageOverTime() {
+		yield return new WaitForSeconds(1);
+		TakeDamage(1);
+	}
+	
 
 	//Heal and display on Healthbar
 	public void HealDamage(int healingPoints)
