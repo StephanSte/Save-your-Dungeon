@@ -14,46 +14,39 @@ public class PlayerWater : MonoBehaviour
 	public Gradient gradient;
 	public Image fill;
 
-	//Set starting Health
+	public PlayerHealth PlayerHealth;
+
+	
 	void Start()
 	{
 		CurrentWater = MaxWater;
 		SetMaxWater(MaxWater);
 	}
 
-	//TODO: Death Screen
-	//Take damage and display on healthbar
+	
 	public void LooseWater(int WaterLost)
 	{
 		CurrentWater -= WaterLost;
 		if (CurrentWater <= 0)
 		{
 			Debug.Log("You are mucho thirsty");
-
-			PlayerHealth::TakeDamageOverTime();
-
-			//Fadeout
-			//Disable FPS controller
-			//Player.SetActive(false);
-			//show deathscreen "You dead the end of game restart game"
+			//take damage here
+			
 		}
 		SetWater(CurrentWater);
 	}
-
-	public int GetCurrentWater()
-    {
-		return this.CurrentWater;
-    }
-
 	
-
 	//gain and display on bar
 	public void GainWater(int WaterGained)
 	{
 		CurrentWater += WaterGained;
 		SetWater(CurrentWater);
 	}
-
+	
+	public int GetCurrentWater()
+    {
+		return this.CurrentWater;
+    }
 
 	//Betrifft nur die bar selber
 	public void SetWater(int health)

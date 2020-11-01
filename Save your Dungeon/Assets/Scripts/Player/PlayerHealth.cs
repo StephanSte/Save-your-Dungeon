@@ -13,6 +13,11 @@ public class PlayerHealth : MonoBehaviour
 	public Gradient gradient;
 	public Image fill;
 
+	public PlayerFood PlayerFood;
+	public PlayerWater PlayerWater;
+	public PlayerRadiation playerRadiation;
+
+
 	//Set starting Health
 	void Start()
 	{
@@ -20,16 +25,16 @@ public class PlayerHealth : MonoBehaviour
 		SetMaxHealth(MaxHealth);	
 	}
 
-	private void LateUpdate()
+	//may work for damage over time not sure though
+	/*private void LateUpdate()
 	{
-		if (PlayerWater ||PlayerFood || PlayerRadiation != true )
+		if (PlayerWater.GetCurrentWater() <= 0 ||PlayerFood.GetCurrentFood() <= 0 || playerRadiation.isInRadiation == true)
 		{
 			StartCoroutine("TakeDamageOverTime", 1f);
 
 		}
-	}
-    //TODO: Death Screen
-    //Take damage and display on healthbar
+	}*/
+    
     public void TakeDamage(int damage)
 	{
 		CurrentHealth -= damage;

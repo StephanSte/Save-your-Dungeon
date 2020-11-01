@@ -9,20 +9,21 @@ public class PlayerRadiation : MonoBehaviour
 	public Slider slider;
 	public static int MinRadiation = 0;
 	public int Radiation;
+	public bool isInRadiation;
 	public GameObject Player;
 
 	public Gradient gradient;
 	public Image fill;
 
-	//Set starting Health
+	public PlayerHealth PlayerHealth;
+
+	//Set starting radiation
 	void Start()
 	{
 		Radiation = MinRadiation;
 		SetMaxRadiation(MinRadiation);
 	}
 
-	//TODO: Death Screen
-	//Take damage and display on healthbar
 	public void LooseRadiation(int radLost)
 	{
 		Radiation -= radLost;
@@ -30,12 +31,7 @@ public class PlayerRadiation : MonoBehaviour
 		{
 			Debug.Log("You are mucho thirsty");
 
-			PlayerHealth::TakeDamageOverTime();
-
-			//Fadeout
-			//Disable FPS controller
-			//Player.SetActive(false);
-			//show deathscreen "You dead the end of game restart game"
+			//PlayerHealth::TakeDamageOverTime();
 		}
 		SetRadiation(Radiation);
 	}
